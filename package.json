@@ -1,0 +1,20 @@
+{
+  "name": "helpvu",
+  "version": "1.0.0",
+  "description": "Service application backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon ./server.js"
+  },
+  "author": "Pratheep",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6",
+    "pg": "^8.4.2",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.5"
+  }
+}
