@@ -1,0 +1,158 @@
+{
+  "stats": {
+    "suites": 0,
+    "tests": 0,
+    "passes": 0,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-11-15T17:31:04.337Z",
+    "end": "2020-11-15T17:31:04.342Z",
+    "duration": 5,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 1,
+    "hasOther": true,
+    "skipped": 2,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "3ee6580c-2458-4d39-a1f6-5c48c1ed7292",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0235c083-1920-4110-bd8c-0b4ecfa7a348",
+          "title": "Testing test api",
+          "fullFile": "C:\\Course\\2.Express & PostgreSQL setup\\test\\test.js",
+          "file": "\\test\\test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "9de41cda-cceb-4462-b08e-ae80e0aa541f",
+              "title": "GET API",
+              "fullFile": "C:\\Course\\2.Express & PostgreSQL setup\\test\\test.js",
+              "file": "\\test\\test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "it should GET status 200",
+                  "fullTitle": "Testing test api GET API it should GET status 200",
+                  "timedOut": false,
+                  "duration": 0,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "chai\n  .request(Server)\n  .get(\"/auth/test\")\n  .end((err, res) => {\n    res.should.have.status(200);\n    done();\n  });",
+                  "err": {},
+                  "uuid": "b822f841-c845-497a-a48b-1af03e55b7b8",
+                  "parentUUID": null,
+                  "isHook": false,
+                  "skipped": true
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [],
+              "pending": [],
+              "skipped": [
+                "b822f841-c845-497a-a48b-1af03e55b7b8"
+              ],
+              "duration": 0,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "62735bc6-71ec-4153-9db3-8c37774f1573",
+              "title": "POST API",
+              "fullFile": "C:\\Course\\2.Express & PostgreSQL setup\\test\\test.js",
+              "file": "\\test\\test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "it should GET status 200",
+                  "fullTitle": "Testing test api POST API it should GET status 200",
+                  "timedOut": false,
+                  "duration": 0,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "chai\n  .request(Server)\n  .post(\"/auth/test\")\n  .end((err, res) => {\n    res.should.have.status(200);\n    done();\n  });",
+                  "err": {},
+                  "uuid": "e2f09569-ff82-4370-884b-6506e11c3a86",
+                  "parentUUID": null,
+                  "isHook": false,
+                  "skipped": true
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [],
+              "pending": [],
+              "skipped": [
+                "e2f09569-ff82-4370-884b-6506e11c3a86"
+              ],
+              "duration": 0,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "8.2.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "5.1.0"
+    }
+  }
+}
