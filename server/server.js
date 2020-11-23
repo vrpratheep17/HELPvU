@@ -20,10 +20,6 @@ const options = {
 
 const swaggerSpec = swaggerJSDoc(options);
 
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
-
 sequelize
   .authenticate()
   .then(() => {
@@ -34,10 +30,10 @@ sequelize
   });
 
 app.use("/auth", Auth);
-app.use("/docs", swaggerUi.serve);
+app.use("/", swaggerUi.serve);
 
 app.get(
-  "/docs",
+  "/",
   swaggerUi.setup(swaggerSpec, {
     explorer: true,
   })
