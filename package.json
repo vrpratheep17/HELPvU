@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "NodeJS backend project structure with Swagger , Unit testing and Sequelize",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "start": "nodemon ./server/server.js",
-    "test": "mocha",
+    "start": "nodemon -r esm ./server/server.js",
+    "test": "mocha -r esm",
     "test:awesome": "mocha --reporter mochawesome || true"
   },
   "author": "Pratheep",
@@ -17,13 +16,14 @@
     "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "joi": "^17.3.0",
     "mocha": "^8.2.1",
     "nodemon": "^2.0.6",
     "pg": "^8.4.2",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^6.3.5",
+    "sequelize": "5.22.3",
     "swagger-jsdoc": "^5.0.1",
     "swagger-ui-express": "^4.1.4"
   },

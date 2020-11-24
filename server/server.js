@@ -51,6 +51,8 @@ app.listen(config.PORT, () => {
   console.log(`port is running on server ${config.PORT}`);
 });
 
+console.log(process.env.NODE_ENV)
+
 export default app; // for testing
 
 

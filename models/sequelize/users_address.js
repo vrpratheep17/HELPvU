@@ -1,20 +1,21 @@
 export default (sequelize, DataTypes) => {
-  const users = sequelize.define(
+  const users_address = sequelize.define(
     "users_address",
     {
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
+        primaryKey: true,
       },
-      user_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-          model: users,
-          key: "id",
-          deferrable: Deferrable.INITIALLY_IMMEDIATE,
-        },
-      },
+      // user_id: {
+      //   type: DataTypes.INTEGER,
+      //   allowNull: false,
+      //   references: {
+      //     model: users,
+      //     key: "id",
+      //     deferrable: Deferrable.INITIALLY_IMMEDIATE,
+      //   },
+      // },
       type: {
         type: DataTypes.STRING,
         isIn: [["Home", "Office"]],
@@ -40,5 +41,11 @@ export default (sequelize, DataTypes) => {
       createdAt: "created_at",
     }
   );
+  users_address.associate = (models) => {
+    users_address.belongsTo(models.users, {
+      foreignKey: "user_id",
+      targetKey: "id",
+    });
+  };
   return users_address;
 };

@@ -1,4 +1,4 @@
-import Sequelize from "sequelize"
+import Sequelize from "sequelize";
 import config from "./index.js";
 
 const sequelize = new Sequelize(
@@ -10,5 +10,6 @@ const sequelize = new Sequelize(
     dialect: config.db.dialect,
   }
 );
-sequelize.sync({});
+sequelize.sync({ force: true });
+
 export default sequelize;

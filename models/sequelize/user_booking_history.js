@@ -4,11 +4,7 @@ export default (sequelize, DataTypes) => {
     {
       id: {
         type: DataTypes.INTEGER,
-        references: {
-          model: users,
-          key: "id",
-          deferrable: Deferrable.INITIALLY_IMMEDIATE,
-        },
+        primaryKey: true,
       },
       service_name: {
         type: DataTypes.STRING,
@@ -35,5 +31,11 @@ export default (sequelize, DataTypes) => {
       createdAt: "created_at",
     }
   );
+  user_booking_history.associate = (models) => {
+    user_booking_history.belongsTo(models.users, {
+      foreignKey: "user_id",
+      targetKey: "id",
+    });
+  };
   return user_booking_history;
 };
