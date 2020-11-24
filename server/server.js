@@ -1,9 +1,12 @@
 import express from "express";
-import Auth from "../routes/auth/auth.js";
+import Auth from "../routes/auth/R_auth.js";
 import config from "../config/index.js";
 import sequelize from "../config/db.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
+import cors from "cors";
+import bodyParser from "body-parser";
+import dotenv from "dotenv";
 
 const app = express();
 
@@ -18,6 +21,11 @@ const options = {
   apis: ["__filename/../routes/auth/auth.js"],
 };
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
 const swaggerSpec = swaggerJSDoc(options);
 
 sequelize
@@ -44,3 +52,5 @@ app.listen(config.PORT, () => {
 });
 
 export default app; // for testing
+
+

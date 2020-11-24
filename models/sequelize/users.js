@@ -17,7 +17,7 @@ export default (sequelize, DataTypes) => {
         len: [2, 10],
       },
       phone_number: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       otp: {
