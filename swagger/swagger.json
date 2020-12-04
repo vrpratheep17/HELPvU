@@ -1,0 +1,142 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "2.0.0",
+      "title": "Health Control App API"      
+    },
+    "host": "localhost:8092",
+    "tags": [
+      {
+        "name": "Auth" 
+      },{
+        "name":"Service"
+      }
+    ],
+    "schemes": [
+      "http",
+      "https"
+    ],
+    
+    "securityDefinitions": {
+        "ApiKeyAuth":{
+          "type": "apiKey",
+          "in": "headers",
+          "name": "authorization"
+        }
+    },
+
+
+
+
+
+
+    "paths": {
+      "/auth/sentotp": {
+        "post": {
+          "summary": "sent otp to the mobile number",
+          "tags": [
+            "Auth"
+          ],
+          "description": "sent otp to the mobile number",
+          "parameters": [
+            {
+              "name": "mobile_number",
+              "in": "formData",
+              "description": "mobile_number",
+              "required":true
+            
+            }           
+          ],
+         
+          "responses": {
+            "200": {
+              "description": "Success"
+              
+            },
+            "400":{
+              "description": "input field missing or invalid field inputs"
+            },
+          
+            "500":{
+              "description": "Internal Server error"
+            }
+          }
+        }
+      }, 
+      
+
+
+      "/auth/verifyotp": {
+        "post": {
+          "summary": "verify otp send to the mobile number",
+          "tags": [
+            "Auth"
+          ],
+          "description": "verify otp send to the mobile number",
+          "parameters": [
+            {
+              "name": "mobile_number",
+              "in": "formData",
+              "description": "mobile_number"
+             
+            },
+            {
+              "name": "otp",
+              "in": "formData",
+              "description": "otp"
+
+            }             
+          ],
+         
+          "responses": {
+            "200": {
+              "description": "Success"
+              
+            },
+            "400":{
+              "description": "input field missing or invalid field inputs"
+            },
+          
+            "500":{
+              "description": "Internal Server error"
+            }
+          }
+        }
+      },
+      "/auth/refreshtoken": {
+        "post": {
+          "summary": "Refresh the user token",
+          "tags": [
+            "Auth"
+          ],
+          "description": "Refresh the user token",
+          "parameters": [
+            {
+              "name": "refresh_token",
+              "in": "formData",
+              "description": "refresh_token"
+            
+            
+            }            
+          ],
+         
+          "responses": {
+            "200": {
+              "description": "Success"
+              
+            },
+            "403":{
+              "description": "input field missing or invalid token"
+            },
+          
+            "500":{
+              "description": "Internal Server error"
+            }
+          }
+        }
+      }
+    }
+  }
+
+  
+  

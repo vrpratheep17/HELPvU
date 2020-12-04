@@ -6,6 +6,7 @@ var basename = path.basename(__filename);
 
 // models export contains all models
 var models = {};
+
 // Sequelize models
 var dirname = __dirname + "/sequelize";
 fs.readdirSync(dirname)

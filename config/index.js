@@ -10,6 +10,10 @@ let setting = {
     username: process.env.DBUser,
     password: process.env.DBPass,
   },
+  Access_token_secret: process.env.Access_token_secret,
+  Refresh_token_secret: process.env.Refresh_token_secret,
 };
 
 export default setting;
+
+
