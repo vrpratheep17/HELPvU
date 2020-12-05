@@ -1,17 +1,18 @@
 import express from "express";
 import Auth from "../routes/auth/R_auth.js";
+import Service from "../routes/services/R_services";
 import config from "../config/index.js";
 import sequelize from "../config/db.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
 import cors from "cors";
 import bodyParser from "body-parser";
+import RDB from "../config/redisDB";
 var path = require("path");
 
 var fs = require("fs");
 
 const app = express();
-
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/auth", Auth);
+app.use("/service", Service);
 
 const swaggerDocs = require("../swagger/swagger.json");
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
@@ -37,5 +39,8 @@ sequelize
   .catch((err) => {
     console.error("Unable to connect to the database:", err);
   });
+
+RDB.on("ready", () => console.log("Redis DB connection success"));
+RDB.on("error", () => console.log("Unable to connect Redis DB"));
 
 export default app; // for testing

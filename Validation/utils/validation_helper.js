@@ -1,10 +1,19 @@
-export const validation_helper = (req, res, next, schema) => {
+export const validation_helper = (req, res, next, schema, type = "body") => {
   const options = {
     abortEarly: false, // include all errors
     allowUnknown: true, // ignore unknown props
     stripUnknown: true, // remove unknown props
   };
-  const { error, value } = schema.validate(req.body, options);
+  if (type == "body") {
+    const { error, value } = schema.validate(req.body, options);
+    sendErrorReport(error, value, req, res, next);
+  } else if (type == "params") {
+    const { error, value } = schema.validate(req.params, options);
+    sendErrorReport(error, value, req, res, next);
+  }
+};
+
+let sendErrorReport = (error, value, req, res, next) => {
   if (error) {
     let validation_errors = {};
 

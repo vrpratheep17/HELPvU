@@ -43,7 +43,7 @@
               "name": "mobile_number",
               "in": "formData",
               "description": "mobile_number",
-              "required":true
+              "type": "number"
             
             }           
           ],
@@ -77,13 +77,15 @@
             {
               "name": "mobile_number",
               "in": "formData",
-              "description": "mobile_number"
+              "description": "mobile_number",
+              "type": "number"
              
             },
             {
               "name": "otp",
               "in": "formData",
-              "description": "otp"
+              "description": "otp",
+              "type": "number"
 
             }             
           ],
@@ -134,7 +136,191 @@
             }
           }
         }
+      },
+
+      "/service/getallservices": {
+        "get": {
+          "summary": "Get all services",
+          "tags": [
+            "Service"
+          ],
+          "description": "Get all services",
+          "responses": {
+            "200": {
+              "description": "Success"
+              
+            },
+                      
+            "500":{
+              "description": "Internal Server error"
+            }
+          }
+        }
+      },
+
+
+
+      "/service/addaservice": {
+        "post": {
+          "summary": "add a service",
+          "tags": [
+            "Service"
+          ],
+          "description": "add a service",
+          "parameters": [
+            {
+              "name": "name",
+              "in": "formData",
+              "description": "name",
+              "type": "string"
+            },
+            {
+              "name": "description",
+              "in": "formData",
+              "description": "description",
+              "type": "string"
+            }  , 
+            {
+              "name": "image_url",
+              "in": "formData",
+              "description": "image_url",
+              "type": "string"
+            }      
+          ],
+         
+          "responses": {
+            "200": {
+              "description": "Success"
+              
+            },
+            "400":{
+              "description": "input field missing or invalid input"
+            },
+          
+            "500":{
+              "description": "Internal Server error"
+            }
+          }
+        }
+      },
+
+      "/service/deleteaservice/{id}": {
+        "delete": {
+          "summary": "delete a service",
+          "tags": [
+            "Service"
+          ],
+          "description": "delete a service",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "type": "number"
+            } 
+                
+          ],
+         
+          "responses": {
+            "200": {
+              "description": "Success"
+              
+            },
+            "400":{
+              "description": "input field missing or invalid input"
+            },
+          
+            "500":{
+              "description": "Internal Server error"
+            }
+          }
+        }
+      },
+
+      "/service/editaservice/{id}": {
+        "put": {
+          "summary": "update a service",
+          "tags": [
+            "Service"
+          ],
+          "description": "update a service",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "type": "number"
+            } ,
+            {
+              "name": "name",
+              "in": "formData",
+              "description": "name",
+              "type": "string"
+            },
+            {
+              "name": "description",
+              "in": "formData",
+              "description": "description",
+              "type": "string"
+            }  , 
+            {
+              "name": "image_url",
+              "in": "formData",
+              "description": "image_url",
+              "type": "string"
+            }      
+                
+          ],
+         
+          "responses": {
+            "200": {
+              "description": "Success"
+              
+            },
+            "400":{
+              "description": "input field missing or invalid input"
+            },
+          
+            "500":{
+              "description": "Internal Server error"
+            }
+          }
+        }
+      },
+
+      "/service/getservicebyid/{id}": {
+        "get": {
+          "summary": "get a service by id",
+          "tags": [
+            "Service"
+          ],
+          "description": "get a service by id",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "type": "number"
+            } 
+          ],
+         
+          "responses": {
+            "200": {
+              "description": "Success"
+              
+            },
+            "400":{
+              "description": "input field missing or invalid input"
+            },
+          
+            "500":{
+              "description": "Internal Server error"
+            }
+          }
+        }
       }
+    
+
     }
   }
 
