@@ -13,11 +13,11 @@ export default (sequelize, DataTypes) => {
         len: [2, 20],
       },
       description: {
-        type: DataTypes.STRING(500),
+        type: DataTypes.STRING(1000),
         allowNull: false,
       },
       image_url: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(500),
         allowNull: false,
         isUrl: true,
       },

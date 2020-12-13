@@ -2,14 +2,16 @@
     "swagger": "2.0",
     "info": {
       "version": "2.0.0",
-      "title": "Health Control App API"      
+      "title": "HelpVu API documentation"      
     },
-    "host": "localhost:8092",
+    
     "tags": [
       {
         "name": "Auth" 
       },{
         "name":"Service"
+      },{
+        "name":"Bookings"
       }
     ],
     "schemes": [
@@ -18,12 +20,12 @@
     ],
     
     "securityDefinitions": {
-        "ApiKeyAuth":{
-          "type": "apiKey",
-          "in": "headers",
-          "name": "authorization"
-        }
-    },
+      "JWT":{
+        "type": "apiKey",
+        "in": "Header",
+        "name": "x-auth-token"
+      }
+  },
 
 
 
@@ -294,7 +296,11 @@
           "tags": [
             "Service"
           ],
+          
           "description": "get a service by id",
+          "security": [{
+            "JWT":[]
+          }],
           "parameters": [
             {
               "name": "id",
@@ -318,8 +324,225 @@
             }
           }
         }
-      }
+      },
     
+
+
+
+      "/booking/bookaservice": {
+        "post": {
+          "summary": "To book a service for the user",
+          "tags": [
+            "Bookings"
+          ],
+          "description": "To book a service for the user",
+          "security": [{
+            "JWT":[]
+          }],
+          "parameters": [
+            {
+              "name": "service_name",
+              "in": "path",
+              "description": "service name",
+              "type": "string"
+            } ,
+            {
+              "name": "location",
+              "in": "path",
+              "description": "location",
+              "type": "string"
+            }  ,
+            {
+              "name": "location_type",
+              "enum" : ["Home", "Office"],
+              "in": "path",
+              "description": "location_type",
+              "type": "string"
+            } 
+          ],
+         
+          "responses": {
+            "200": {
+              "description": "Success"
+              
+            },
+            "400":{
+              "description": "input field missing or invalid input"
+            },
+          
+            "500":{
+              "description": "Internal Server error"
+            }
+          }
+        }
+      },
+
+      "/booking/getbookinghistorybyid": {
+        "post": {
+          "summary": "Get booking History of the user",
+          "tags": [
+            "Bookings"
+          ],
+          "security": [{
+            "JWT":[]
+          }],
+          "description": "Get booking history for the user",
+          "parameters": [
+            {
+              "name": "limit",
+              "in": "path",
+              "description": "limit",
+              "type": "number"
+            } ,
+            {
+              "name": "offset",
+              "in": "path",
+              "description": "offset",
+              "type": "number"
+            } 
+          ],
+         
+          "responses": {
+            "200": {
+              "description": "Success"
+              
+            },
+            "400":{
+              "description": "input field missing or invalid input"
+            },
+          
+            "500":{
+              "description": "Internal Server error"
+            }
+          }
+        }
+      },
+      
+      "/booking/getallbooking": {
+        "post": {
+          "summary": "Get all bookings",
+          "tags": [
+            "Bookings"
+          ],
+          "description": "Get all booking history",
+          "security": [{
+            "JWT":[]
+          }],
+          "parameters": [
+            {
+              "name": "limit",
+              "in": "path",
+              "description": "limit",
+              "type": "number"
+            } ,
+            {
+              "name": "offset",
+              "in": "path",
+              "description": "offset",
+              "type": "number"
+            } 
+          ],
+         
+          "responses": {
+            "200": {
+              "description": "Success"
+              
+            },
+            "400":{
+              "description": "input field missing or invalid input"
+            },
+          
+            "500":{
+              "description": "Internal Server error"
+            }
+          }
+        }
+      },
+    
+
+
+
+      "/booking/updateabookingbyid": {
+        "post": {
+          "summary": "To update a booking by booking id",
+          "tags": [
+            "Bookings"
+          ],
+          "description": "To update a booking by booking idr",
+          "security": [{
+            "JWT":[]
+          }],
+          "parameters": [
+            {
+              "name": "service_name",
+              "in": "path",
+              "description": "service name",
+              "type": "string"
+            } ,
+            {
+              "name": "location",
+              "in": "path",
+              "description": "location",
+              "type": "string"
+            }  ,
+            {
+              "name": "location_type",
+              "enum" : ["Home", "Office"],
+              "in": "path",
+              "description": "location_type",
+              "type": "string"
+            } ,
+            {
+              "name": "cost",
+              "in": "path",
+              "description": "cost",
+              "type": "number"
+            }  ,
+            {
+              "name": "service_by_person_name",
+              "in": "path",
+              "description": "Service Person Name",
+              "type": "string"
+            }   ,
+            {
+              "name": "service_by_person_number",
+              "in": "path",
+              "description": "Service Person number",
+              "type": "string"
+            }  
+            ,
+            {
+              "name": "service_status",
+              "in": "path",
+              "description": "Service status",
+              "enum" : ["Completed", "Cancelled", "Not active", "Active"],
+              "type": "string"
+            }   ,
+            {
+              "name": "remarks",
+              "in": "path",
+              "description": "Remarks",
+            
+              "type": "string"
+            }  
+          ],
+         
+          "responses": {
+            "200": {
+              "description": "Success"
+              
+            },
+            "400":{
+              "description": "input field missing or invalid input"
+            },
+          
+            "500":{
+              "description": "Internal Server error"
+            }
+          }
+        }
+      }
+      
 
     }
   }

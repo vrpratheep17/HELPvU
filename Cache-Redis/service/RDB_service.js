@@ -1,4 +1,4 @@
-import RDB from "../../config/redisDB";
+import RDB from "../../config/Database/Redis/redisDB";
 
 export let RDB_get_all_services = (req, res, next) => {
   RDB.hgetall("Service", (err, data) => {

@@ -1,4 +1,4 @@
-import sequelize from "../../config/db.js";
+import sequelize from "../../config/Database/Postgresql/PGsql";
 import models from "../../models/index.js";
 import moment from "moment";
 import jwt from "jsonwebtoken";
@@ -6,8 +6,6 @@ import config from "../../config/index";
 
 //TODO: Integrating otp api
 //reason: waiting for 91 to give trail service
-
-console.log(config.Refresh_token_secret);
 
 export let sent_otp = (req, res) => {
   console.log(req.body);
@@ -65,15 +63,16 @@ export let verify_otp = (req, res) => {
             res.status(400).send({ error: "OTP expired", data: null });
           } else if (parseInt(req.body.otp) === user.otp) {
             let user_data = {
-              mobile_number: req.body.mobile_number,
+              // mobile_number: req.body.mobile_number,
               name: user.name,
+              id: user.id,
             };
 
             const access_token = jwt.sign(
               user_data,
               config.Access_token_secret,
               {
-                expiresIn: "15m",
+                expiresIn: "60m",
               }
             );
             const refresh_token = jwt.sign(
@@ -120,7 +119,7 @@ export let refresh_token = (req, res) => {
                   .send({ error: "Invalid Token", data: null });
               const access_token = jwt.sign(
                 {
-                  mobile_number: decoded.mobile_number,
+                  id: decoded.id,
                   name: decoded.name,
                 },
                 config.Access_token_secret,
@@ -137,6 +136,24 @@ export let refresh_token = (req, res) => {
         } else {
           res.status(403).send({ error: "Invalid Token", data: null });
         }
+      });
+  } catch (err) {
+    res.status(500).send({ error: "Something broke", data: null });
+  }
+};
+
+export let get_all_users = (req, res) => {
+  try {
+    models.users
+      .findAll({
+        include: [
+          {
+            model: models.user_booking_history,
+          },
+        ],
+      })
+      .then((data) => {
+        res.json(data);
       });
   } catch (err) {
     res.status(500).send({ error: "Something broke", data: null });

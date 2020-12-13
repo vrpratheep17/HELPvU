@@ -1,5 +1,5 @@
 import models from "../../models/index.js";
-import RDB from "../../config/redisDB";
+import RDB from "../../config/Database/Redis/redisDB";
 
 export let get_all_services = (req, res) => {
   try {
@@ -60,6 +60,7 @@ export let add_a_service = (req, res) => {
         res.json({ error: null, data: "Service added successfully" });
       })
       .catch((err) => {
+        console.log(err);
         res
           .status(500)
           .send({ error: "Unable to access the Database", data: null });

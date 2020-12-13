@@ -1,4 +1,4 @@
-import config from "./index.js";
+import config from "../../index";
 import redis from "redis";
 
 let RDB = redis.createClient({

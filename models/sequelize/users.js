@@ -1,3 +1,5 @@
+import user_booking_history from "./user_booking_history";
+
 export default (sequelize, DataTypes) => {
   const users = sequelize.define(
     "users",
@@ -36,5 +38,6 @@ export default (sequelize, DataTypes) => {
       createdAt: "created_at",
     }
   );
+
   return users;
 };

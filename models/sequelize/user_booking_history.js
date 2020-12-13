@@ -5,12 +5,14 @@ export default (sequelize, DataTypes) => {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
       },
+
       service_name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      charge: {
+      cost: {
         type: DataTypes.INTEGER,
         defaultValue: 0,
       },
@@ -22,7 +24,20 @@ export default (sequelize, DataTypes) => {
       },
       service_status: {
         type: DataTypes.STRING,
-        isIn: [["Completed", "in process", "Cancelled"]],
+        isIn: [["Completed", "Cancelled", "Not active", "Active"]],
+        defaultValue: "Not active",
+      },
+      remarks: {
+        type: DataTypes.STRING,
+      },
+      location: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      location_type: {
+        type: DataTypes.STRING,
+        isIn: [["Home", "Office"]],
+        allowNull: false,
       },
     },
     {
@@ -31,11 +46,6 @@ export default (sequelize, DataTypes) => {
       createdAt: "created_at",
     }
   );
-  user_booking_history.associate = (models) => {
-    user_booking_history.belongsTo(models.users, {
-      foreignKey: "user_id",
-      targetKey: "id",
-    });
-  };
+
   return user_booking_history;
 };

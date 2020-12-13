@@ -27,6 +27,7 @@
     "pg-hstore": "^2.3.3",
     "redis": "^3.0.2",
     "sequelize": "5.22.3",
+    "sequelize-noupdate-attributes": "^1.0.0",
     "swagger-jsdoc": "^5.0.1",
     "swagger-ui-express": "^4.1.4"
   },

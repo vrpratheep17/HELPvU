@@ -1,5 +1,5 @@
 import Sequelize from "sequelize";
-import config from "./index.js";
+import config from "../../index.js";
 
 const sequelize = new Sequelize(
   config.db.database,
@@ -12,6 +12,6 @@ const sequelize = new Sequelize(
     useUTC: true,
   }
 );
-sequelize.sync();
+sequelize.sync({});
 
 export default sequelize;

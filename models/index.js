@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import sequelize from "../config/db";
+import sequelize from "../config/Database/Postgresql/PGsql";
 
 var basename = path.basename(__filename);
 
@@ -25,5 +25,8 @@ Object.keys(models).forEach(function (modelName) {
     models[modelName].associate(models);
   }
 });
+
+models.users.hasMany(models.user_booking_history)
+models.user_booking_history.belongsTo(models.users)
 
 export default models;
