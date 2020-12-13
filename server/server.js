@@ -9,6 +9,7 @@ import swaggerJSDoc from "swagger-jsdoc";
 import cors from "cors";
 import bodyParser from "body-parser";
 import RDB from "../config/Database/Redis/redisDB";
+
 var path = require("path");
 
 var fs = require("fs");

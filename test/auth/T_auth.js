@@ -7,17 +7,6 @@ let should = chai.should();
 
 export default describe("Auth", () => {
   describe("send OTP", () => {
-    it("Success - 10 digit mobile number as input", (done) => {
-      chai
-        .request(Server)
-        .post("/auth/sentotp")
-        .set("content-type", "application/x-www-form-urlencoded")
-        .send({ mobile_number: 9597908587 })
-        .end((err, res) => {
-          res.should.have.status(200);
-          done();
-        });
-    });
     it("Error - less than 10 digit mobile number as input", (done) => {
       chai
         .request(Server)
@@ -62,6 +51,17 @@ export default describe("Auth", () => {
           done();
         });
     });
+    it("Success - 10 digit mobile number as input", (done) => {
+      chai
+        .request(Server)
+        .post("/auth/sentotp")
+        .set("content-type", "application/x-www-form-urlencoded")
+        .send({ mobile_number: 9590858700 })
+        .end((err, res) => {
+          res.should.have.status(200);
+          done();
+        });
+    }).timeout(15000);
   });
   describe("verify OTP", () => {
     it("Error - 10 digit mobile number as input and a random otp", (done) => {

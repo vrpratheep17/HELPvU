@@ -10,6 +10,7 @@ const sequelize = new Sequelize(
     dialect: config.db.dialect,
     logging: false,
     useUTC: true,
+  
   }
 );
 sequelize.sync({});

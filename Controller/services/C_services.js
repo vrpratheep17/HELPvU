@@ -1,5 +1,6 @@
 import models from "../../models/index.js";
 import RDB from "../../config/Database/Redis/redisDB";
+import faker from "faker";
 
 export let get_all_services = (req, res) => {
   try {
@@ -37,7 +38,7 @@ export let get_service_by_id = (req, res) => {
             data: service,
           });
         } else {
-          res.send({ error: "record not available", data: null });
+          res.status(404).send({ error: "service not available", data: null });
         }
       })
       .catch((err) => {
@@ -60,7 +61,6 @@ export let add_a_service = (req, res) => {
         res.json({ error: null, data: "Service added successfully" });
       })
       .catch((err) => {
-        console.log(err);
         res
           .status(500)
           .send({ error: "Unable to access the Database", data: null });

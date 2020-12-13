@@ -21,9 +21,7 @@ let route_protection = (req, res, next) => {
         models.users
           .findOne({ where: { id: decoded.id } })
           .then((success) => {
-            console.log(success);
             if (success != null) {
-              console.log("done");
               req.user = decoded;
               next();
             } else {

@@ -8,7 +8,6 @@ import config from "../../config/index";
 //reason: waiting for 91 to give trail service
 
 export let sent_otp = (req, res) => {
-  console.log(req.body);
   try {
     models.users
       .findOrCreate({
@@ -31,6 +30,7 @@ export let sent_otp = (req, res) => {
             });
           })
           .catch((err) => {
+            console.error(err);
             res
               .status(500)
               .send({ error: "Unable to access the Database", data: null });

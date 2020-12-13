@@ -15,9 +15,7 @@ export let book_a_service = (req, res) => {
       })
       .catch((err) => {
         res.status(500).json({ error: "Unable to insert data", data: null });
-        console.log(err);
       });
-    console.log(req.user);
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: "Something broke", data: null });
