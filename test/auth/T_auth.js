@@ -1,5 +1,6 @@
 import Server from "../../server/server.js";
 import chai from "chai";
+import models from "../../models/index";
 import chaiHttp from "chai-http";
 
 chai.use(chaiHttp);

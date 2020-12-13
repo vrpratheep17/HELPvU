@@ -19,7 +19,7 @@ export default describe("Services", () => {
           res.body.data.should.be.an("array");
           done();
         });
-    });
+    }).timeout(15000)
   });
   describe("Add a service", () => {
     it("Error - without name while adding a service", (done) => {

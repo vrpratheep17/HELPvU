@@ -47,6 +47,7 @@ export let get_booking_history_by_id = (req, res) => {
 export let get_all_booking = (req, res) => {
   try {
     let { limit, offset } = req.body;
+
     models.user_booking_history
       .findAndCountAll({
         limit: limit,
@@ -68,7 +69,7 @@ export let get_all_booking = (req, res) => {
 export let update_a_booking_by_id = (req, res) => {
   try {
     models.user_booking_history
-      .findOne({ where: { id: req.body.id } })
+      .findOne({ where: { id: req.params.id } })
       .then((booking) => {
         if (booking) {
           let {

@@ -32,7 +32,7 @@ router.post(
 router.post("/getallbooking", get_all_booking_validator, get_all_booking);
 
 router.put(
-  "/updateabookingbyid",
+  "/updateabookingbyid/:id",
   update_a_booking_validator,
   update_a_booking_by_id
 );
