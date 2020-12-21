@@ -27,7 +27,7 @@ app.use("/service", Service);
 app.use("/booking", Booking);
 
 const swaggerDocs = require("../swagger/swagger.json");
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use("/", swaggerUi.serve);
 
