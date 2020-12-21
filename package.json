@@ -6,7 +6,9 @@
   "scripts": {
     "start": "nodemon -r esm ./server/server.js",
     "test": "mocha",
-    "test:awesome": "mocha -r esm --reporter mochawesome || true"
+    "test:awesome": "mocha -r esm --reporter mochawesome || true",
+    "docker": "docker build -t helpvu . && docker run -it -p 8092:8092 helpvu",
+    "stop-docker": "docker stop helpvu"
   },
   "author": "Pratheep",
   "license": "ISC",
